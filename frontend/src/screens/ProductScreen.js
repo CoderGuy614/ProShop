@@ -3,14 +3,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating";
-import products from "../products";
 
 const ProductScreen = ({ match }) => {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
     getProduct();
-  }, []);
+    //eslint-disable-next-line
+  }, [match]);
 
   const getProduct = async () => {
     const { data } = await axios.get(`/api/products/${match.params.id}`);
